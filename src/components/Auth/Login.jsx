@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setEmail("")
-    setPassword("")
+    handleLogin(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -46,6 +48,10 @@ const Login = () => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
 };
 
 export default Login;
